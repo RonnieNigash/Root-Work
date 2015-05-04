@@ -1,2 +1,2 @@
 # pp6calculator
-Playing around and setting up for LHC ATLAS Alignment
+Playing around in C++, refreshing myself with the language. Setting up for LHC ATLAS Alignment Software Development.
