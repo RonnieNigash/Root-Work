@@ -27,11 +27,15 @@ bool quadratic(double a, double b, double c, double& positive, double& negative)
 	return true;
 }
 
-double multiply(double a, double b)
+void sum(double a, double b, double& result)
 {
-	return a*b;
+	result = a + b;
 }
 
+void multiply(double a, double b, double& result)
+{
+	result = a*b;
+}
 void print(double a)
 {
 	std::cout << "Result = " << a << std::endl;
@@ -43,11 +47,18 @@ void print(double a)
 
 int main()
 {
-	double a, b, c;
-
+	double a, b, c, result;
 	double pos;
 	double neg;
-	printf("Let's do some Quadratic Formula! Enter coefficients a, b ,c: ");
+	printf("Let's do some simple operations! Enter two numbers: ");
+	std::cin >> a >> b;
+	sum(a, b, result);
+	printf("\nThe sum of %.1f and %.1f is: %.2f", a, b, result);
+	multiply(a, b, result);
+	printf("\nThe product of %.1f and %.1f is: %.2f", a, b, result);
+
+
+	printf("\nLet's do some Quadratic Formula! Enter coefficients a, b ,c: ");
 	std::cin >> a >> b >> c;
 	printf("Our function is: %.1fx^2+%.1fx+%.1f\n", a, b, c);
 	if(quadratic(a,b,c,pos,neg)){
@@ -56,6 +67,7 @@ int main()
 	} else {
 		printf("No solutions found.\n");
 	}
+
 	printf("\nLet's sort some arrays with Bubble Sort!\n");
 	int list[10];
 	int size;
