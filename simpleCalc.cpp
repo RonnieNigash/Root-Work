@@ -1,6 +1,7 @@
 #include <iostream>
 #include <stdio.h>      /* printf */
 #include <math.h>
+#include <cmath>
 
 void bubbleSort(int *ptr, int k)
 {
@@ -88,5 +89,6 @@ int main()
 	for (int i = 0; i < size; i++) {
 		printf("%d   ", list[i]);
 	}
+
 	return 0;
 }
