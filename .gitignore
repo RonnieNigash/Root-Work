@@ -1,6 +1,6 @@
 # Lines beginning with a '#' are comments
 # Text Editor Temporaries
-*~
+i*~
 *swp
 
 # Mac Filesystem
@@ -12,4 +12,7 @@
 *.a
 *.dylib
 *.pyc
-
+*.com
+*.class
+*.dll
+*.exe
