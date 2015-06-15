@@ -1,2 +1,3 @@
-# pp6calculator
-Playing around in C++, refreshing myself with the language. Setting up for LHC ATLAS Alignment Software Development.
+# Working with the CERN ROOT Framework
+
+Building out some histograms and event-collision data with CInt, C++ and Python 
