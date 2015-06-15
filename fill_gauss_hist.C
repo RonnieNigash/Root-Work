@@ -29,7 +29,7 @@ void fillGauss() {
 
 	newFunction->Draw();
 
-	auto functionLabel = new TPaveLabel(5, 39, 9.8, 46, "The Guassian Function");
+	auto functionLabel = new TPaveLabel(5, 39, 9.8, 46, "The Gaussian Function");
 	functionLabel->SetFillColor(40);
 	functionLabel->Draw();
 
