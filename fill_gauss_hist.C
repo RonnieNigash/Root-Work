@@ -14,19 +14,20 @@ void fillGauss() {
 
 	gBenchmark->Start("fillGauss");
 
-	auto formula = new TFormula("formula", "x*gaus(0)", 0, 10);
+	auto formula = new TFormula("formula", "abs(sin(x)/x)");
+	auto newFunction = new TF1("newFunction", "x*gauss(0) + formula", 0, 10);
 	formula->SetParameters(10, 4, 1, 20);
 
-	funcPad->SetGrid(x);
-	funcPad->SetGrid(y);
+	funcPad->SetGridx();
+	funcPad->SetGridy();
 	funcPad->GetFrame()->SetFillColor(36);
 	funcPad->GetFrame()->SetBorderMode(-1);
 	funcPad->GetFrame()->SetBorderSize(5);
 
-	formula->SetLineColor(7);
-	formula->SetLineWidth(5);
+	newFunction->SetLineColor(7);
+	newFunction->SetLineWidth(5);
 
-	formula->Draw();
+	newFunction->Draw();
 
 	auto functionLabel = new TPaveLabel(5, 39, 9.8, 46, "The Guassian Function");
 	functionLabel->SetFillColor(40);
@@ -44,7 +45,7 @@ void fillGauss() {
 
 	auto histDraw = new TH1F("histDraw", "Draw numbers", 200, 0, 10);
 	histDraw->SetFillColor(45);
-	histDraw->FillRandom("formula", 100000);
+	histDraw->FillRandom("newFunction", 100000);
 	histDraw->Draw();
 	canvas->Update();
 
@@ -52,6 +53,7 @@ void fillGauss() {
 	
 	TFile newFile("fill_gauss_hist.root", "RECREATE");
 	formula->Write();
+	newFunction->Write();
 	histDraw->Write();
 	gBenchmark->Show("fillGuass");
 
