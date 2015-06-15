@@ -14,8 +14,8 @@ void fillGauss() {
 
 	gBenchmark->Start("fillGauss");
 
-	//auto formula = new TFormula("formula", "abs(sin(x)/x)");
-	auto newFunction = new TF1("newFunction", "x*gauss(0)", 0, 10);
+	auto formula = new TFormula("formula", "abs(sin(x)/x)");
+	auto newFunction = new TF1("newFunction", "x*gaus(0) + [2]*formula", 0, 10);
 	newFunction->SetParameters(10, 4, 1, 20);
 
 	funcPad->SetGridx();
@@ -52,7 +52,7 @@ void fillGauss() {
 	// Open ROOT file and save
 	
 	TFile newFile("fill_gauss_hist.root", "RECREATE");
-//	formula->Write();
+	formula->Write();
 	newFunction->Write();
 	histDraw->Write();
 	gBenchmark->Show("fillGuass");
