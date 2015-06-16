@@ -2,7 +2,21 @@ void histogram_in_tree_branches() {
 	// Creates a Tree with two branches -- each branch generates 10,000 leaves
 	// Values at leaves are Gaussian distribution and Poisson
 	
-	// We will use PoissonD and Rannor function calls from API
+	// Found PoissonD and Rannor in API documentation, maybe use these
 	// https://root.cern.ch/root/html600/TRandom.html#TRandom:Rannor
 
+	TFile *file = new TFile("histo.root", "RECREATE");
+	TTree *tree = new TTree("tree", "My Tree");
+
+	// @TODO: Fix this syntax for Branching -- should have two more params
+	// 		  Pointer to address of some object -- create a Point object maybe?	
+	tree->Branch("X", "X");
+	Float_t sigma_a, sigma_b;	
+	for (int i = 0; i < 100000; i++) {
+		gRandom->Rannor(sigma_a, sigma_b);
+		Float_t random = gRandom->Rndm(1);
+
+		tree->Fill();
+	}	
+	tree->Write();
 }
