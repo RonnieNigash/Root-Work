@@ -14,15 +14,21 @@ void histogram_in_tree_branches() {
 	Float_t X, Y;
 	Double_t random;
 
-	tree.Branch("X", &X, "X");
-	tree.Branch("Y", &Y, "Y");
+	tree->Branch("X", &X, "X");
+	tree->Branch("Y", &Y, "Y");
 
-	for (int i = 0; i < 100000; i++) {
-		gRandom->Rannor(X, Y);
-		random = gRandom->Rndm();
+	for (int i = 0; i < 100; i++) {
+		X = gRandom->Gaus(0, 1);
+		Y = gRandom->Poisson(1.1);
+		//gRandom->Rannor(X, Y);
+		//random = gRandom->Rndm();
 		tree->Fill();
 	}	
 	// @TODO: Add the ability to Draw() the tree as well
 	// @TODO: Build out both branches and generate values
 	tree->Write();
+	
+	// Make the histograms
+//	tree->Draw("X");
+	tree->Draw("Y");	
 }
