@@ -8,25 +8,16 @@ void histogram_in_tree_branches() {
 	TFile *file = new TFile("histo.root", "RECREATE");
 	TTree *tree = new TTree("tree", "My Tree");
 
-	// @TODO: Fix this syntax for Branching -- should have two more params
-	// 		  Pointer to address of some object -- create a Point object maybe?	
-	
 	Float_t X, Y;
-	Double_t random;
-	TRandom *rand = new TRandom(0);
 
 	tree->Branch("X", &X, "X");
 	tree->Branch("Y", &Y, "Y");
 
-	for (int i = 0; i < 100; i++) {
+	for (int i = 0; i < 10; i++) {
 		X = gRandom->Gaus(0, 1);
-		Y = (float)rand->Poisson(1.1);
-		//gRandom->Rannor(X, Y);
-		//random = gRandom->Rndm();
+		Y = gRandom->Poisson(0);
 		tree->Fill();
 	}	
-	// @TODO: Add the ability to Draw() the tree as well
-	// @TODO: Build out both branches and generate values
 	tree->Write();
 	
 	// Make the histograms
