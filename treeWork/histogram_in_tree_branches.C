@@ -10,12 +10,16 @@ void histogram_in_tree_branches() {
 
 	// @TODO: Fix this syntax for Branching -- should have two more params
 	// 		  Pointer to address of some object -- create a Point object maybe?	
-	tree->Branch("X", "X");
-	Float_t sigma_a, sigma_b;	
-	for (int i = 0; i < 100000; i++) {
-		gRandom->Rannor(sigma_a, sigma_b);
-		Float_t random = gRandom->Rndm(1);
+	
+	Float_t X, Y;
+	Double_t random;
 
+	tree.Branch("X", &X, "X");
+	tree.Branch("Y", &Y, "Y");
+
+	for (int i = 0; i < 100000; i++) {
+		gRandom->Rannor(X, Y);
+		random = gRandom->Rndm();
 		tree->Fill();
 	}	
 	// @TODO: Add the ability to Draw() the tree as well
