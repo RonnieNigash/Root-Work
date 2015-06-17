@@ -13,14 +13,15 @@ void histogram_in_tree_branches() {
 	tree->Branch("X", &X, "X");
 	tree->Branch("Y", &Y, "Y");
 
-	for (int i = 0; i < 10; i++) {
-		X = gRandom->Gaus(0, 1);
-		Y = gRandom->Poisson(0);
-		tree->Fill();
+	// 10,000 entries
+	for (int i = 0; i < 10000; i++) {
+		X = gRandom->Gaus(0, 1); // Fill out the X branch with Gaussian Distribution
+		Y = (float)gRandom->Poisson(1.1); // Fill out the Y branch with a Poisson Distribution
+		tree->Fill(); // Puts values into bins in branches
 	}	
-	tree->Write();
+	tree->Write(); // Write to histo.root
 	
 	// Make the histograms
-//	tree->Draw("X");
-	tree->Draw("Y");	
+  	tree->Draw("Y");
+//	tree->Draw("Y");	
 }
