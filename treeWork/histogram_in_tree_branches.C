@@ -13,13 +13,14 @@ void histogram_in_tree_branches() {
 	
 	Float_t X, Y;
 	Double_t random;
+	TRandom *rand = new TRandom(0);
 
 	tree->Branch("X", &X, "X");
 	tree->Branch("Y", &Y, "Y");
 
 	for (int i = 0; i < 100; i++) {
 		X = gRandom->Gaus(0, 1);
-		Y = gRandom->Poisson(1.1);
+		Y = (float)rand->Poisson(1.1);
 		//gRandom->Rannor(X, Y);
 		//random = gRandom->Rndm();
 		tree->Fill();
