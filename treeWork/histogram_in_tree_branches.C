@@ -22,6 +22,6 @@ void histogram_in_tree_branches() {
 	tree->Write(); // Write to histo.root
 	
 	// Make the histograms
-  	tree->Draw("Y");
+	tree->Draw("X");
 //	tree->Draw("Y");	
 }

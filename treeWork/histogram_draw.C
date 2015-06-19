@@ -5,7 +5,7 @@
 
 void histogram_draw() {
 	// Create histogram
-	TH1F *histo = new TH1F("histo", "myTree", 10000, -2,2);
+	TH1F *histo = new TH1F("histo", "My Tree", 10000, -2,2);
 
 	// Open file with tree
 //	TFile *file = TFile::Open("/users/ronnie/root/bin/histo.root");
@@ -17,7 +17,7 @@ void histogram_draw() {
 //		return;
 //	}
 
-	TTreeReader treeReader("myTree", &file);
+	TTreeReader treeReader("My Tree", &file);
 		
 	// Names of branches
 	TTreeReaderValue<Float_t> valX(treeReader, "X");
