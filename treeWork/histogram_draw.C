@@ -10,6 +10,8 @@ void histogram_draw() {
 	// Open file with tree
 //	TFile *file = TFile::Open("/users/ronnie/root/bin/histo.root");
 	TFile file("/users/ronnie/root/bin/histo.root");
+	Tfile file("hist.root");
+	// Taken from local $ROOTSYS/bin directory or nah?
 
 	// Get us out of here if our file is invalid!
 //	if (!file || file->IsZombie()) {
