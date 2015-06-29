@@ -25,8 +25,10 @@ void histogram_draw() {
 	TTreeReaderValue<Float_t> valY(treeReader, "Y");
 
 	while(treeReader.Next()) {
-		histo->Fill(*valX);
+		//histo->Fill(*valX);
+		histoX->Fill(*valX);
+		histoY->Fill(*valY);
 	}
-
-	histo->Draw();
+	histoX->Draw();
+	histoY->Draw();
 }
