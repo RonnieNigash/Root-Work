@@ -7,6 +7,15 @@ void histogram_draw() {
 	// Create canvas
 	TCanvas *canvas = new TCanvas("canvas", "Histogram Distributions", 200, 10, 800, 1200);
 	canvas->SetFillColor(15);
+	// Create pads
+	auto histXPad = new TPad("histXPad", "X Histogram", 0.05, 0.50, 0.95, 0.95, 21);
+	auto histYPad = new TPad("histYPad", "Y Histogram", 0.05, 0.05, 0.95, 0.45, 21);
+	auto histXYPad = new TPad("histXYPad", "XY Histogram", 0.05, 0.05, 0.95, 0.05, 21);
+
+	histXPad->Draw();
+	histYPad->Draw();
+	histXYPad->Draw();
+
 
 	// Create histograms
 	TH1F *histoX = new TH1F("histoY", "tree", 10000, -2,2);
