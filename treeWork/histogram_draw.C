@@ -5,21 +5,29 @@
 
 void histogram_draw() {
 	// Create histogram
-	TH1F *histo = new TH1F("histo", "My Tree", 10000, -2,2);
+	TH1F *histo = new TH1F("histo", "tree", 10000, -2,2);
 
 	// Open file with tree
+	TFile *file = new TFile("histo.root","READ");
 //	TFile *file = TFile::Open("/users/ronnie/root/bin/histo.root");
-	TFile file("/users/ronnie/root/bin/histo.root");
-	Tfile file("hist.root");
+//	TFile file("/users/ronnie/root/bin/histo.root");
+//	Tfile file("hist.root");
 	// Taken from local $ROOTSYS/bin directory or nah?
 
 	// Get us out of here if our file is invalid!
+	if (file->IsOpen()) {
+		cout << "File opened!";
+	}
+	
+
+	gFile = file;
 //	if (!file || file->IsZombie()) {
 //		cout << "File not found.";
 //		return;
 //	}
 
-	TTreeReader treeReader("My Tree", &file);
+	TTreeReader treeReader("tree", file);
+//	TTreeReader treeReader("My Tree", &file);
 		
 	// Names of branches
 	TTreeReaderValue<Float_t> valX(treeReader, "X");
