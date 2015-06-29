@@ -6,7 +6,7 @@
 void histogram_draw() {
 	// Create canvas
 	TCanvas *canvas = new TCanvas("canvas", "Histogram Distributions", 200, 10, 800, 1200);
-	canvas->SetFillColor(15);
+	canvas->SetFillColor(20);
 	// Create pads
 	auto histXPad = new TPad("histXPad", "X Histogram", 0.05, 0.50, 0.95, 0.95, 21);
 	auto histYPad = new TPad("histYPad", "Y Histogram", 0.05, 0.05, 0.95, 0.45, 21);
@@ -40,16 +40,16 @@ void histogram_draw() {
 
 	while(treeReader.Next()) {
 		//histo->Fill(*valX);
-		histoX->Fill(*valX);
-		histoY->Fill(*valY);
+//		histoX->Fill(*valX);
+//		histoY->Fill(*valY);
 		histoXY->Fill(*valX, *valY);
 	}
 	// Draw our histograms to the canvas and update after each draw
-	histoX->Draw();
-	canvas->Update();
+//	histoX->Draw();
+//	canvas->Update();
 
-	histoY->Draw();
-	canvas->Update();
+//	histoY->Draw();
+//	canvas->Update();
 
 	histoXY->Draw();
 	canvas->Update();
