@@ -35,11 +35,13 @@ void histogram_draw() {
 		histoY->Fill(*valY);
 		histoXY->Fill(*valX, *valY);
 	}
-	// Draw our histograms to the canvas
+	// Draw our histograms to the canvas and update after each draw
 	histoX->Draw();
-	histoY->Draw();
-	histoXY->Draw();
+	canvas->Update();
 
-	// Update canvas
+	histoY->Draw();
+	canvas->Update();
+
+	histoXY->Draw();
 	canvas->Update();
 }
