@@ -4,9 +4,14 @@
 #include "TTreeReaderValue.h"
 
 void histogram_draw() {
-	// Create histogram
+	// Create canvas
+	TCanvas *canvas = new TCanvas("canvas", "Histogram Distributions", 200, 10, 800, 1200);
+	canvas->SetFillColor(15);
+
+	// Create histograms
 	TH1F *histoX = new TH1F("histoY", "tree", 10000, -2,2);
 	TH1F *histoY = new TH1F("histoY", "tree", 10000, 0, 4);
+	TH2F *histoXY = new TH2F("histoXY", "tree", 100000, -2, 4);
 
 	// Open file with tree
 	TFile *file = new TFile("histo.root","READ");
@@ -28,7 +33,9 @@ void histogram_draw() {
 		//histo->Fill(*valX);
 		histoX->Fill(*valX);
 		histoY->Fill(*valY);
+		histoXY->Fill(*valX, *valY);
 	}
 	histoX->Draw();
 	histoY->Draw();
+	histoXY->Draw();
 }
