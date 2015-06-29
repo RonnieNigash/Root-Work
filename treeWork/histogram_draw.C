@@ -11,7 +11,7 @@ void histogram_draw() {
 	// Create histograms
 	TH1F *histoX = new TH1F("histoY", "tree", 10000, -2,2);
 	TH1F *histoY = new TH1F("histoY", "tree", 10000, 0, 4);
-	TH2F *histoXY = new TH2F("histoXY", "tree", 100000, -2, 4);
+	TH2F *histoXY = new TH2F("histoXY", "tree", 100000, -2, 4, 10000, 0, 5);
 
 	// Open file with tree
 	TFile *file = new TFile("histo.root","READ");
@@ -35,7 +35,11 @@ void histogram_draw() {
 		histoY->Fill(*valY);
 		histoXY->Fill(*valX, *valY);
 	}
+	// Draw our histograms to the canvas
 	histoX->Draw();
 	histoY->Draw();
 	histoXY->Draw();
+
+	// Update canvas
+	canvas->Update();
 }
